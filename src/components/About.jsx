@@ -12,30 +12,25 @@ const skills = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-background border-t border-border/50">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Tentang <span className="text-blue-400">Saya</span>
+    <section id="about" className="border-t border-border/50 bg-background py-24">
+      <div className="container mx-auto max-w-6xl px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.5 }}>
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+              Tentang <span className="text-[var(--color-accent)]">Saya</span>
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="mb-6 leading-relaxed text-muted-foreground">
               Saya adalah seorang Full Stack Developer yang berpengalaman membangun aplikasi web dan mobile end-to-end. Memiliki latar belakang kuat di bidang Infrastruktur IT dan Pendidikan Informatika (D3 Manajemen Informatika dari STMIK Bani Saleh, 2022).
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="mb-6 leading-relaxed text-muted-foreground">
               Saya menguasai seluruh siklus pengembangan perangkat lunak (SDLC), mulai dari perancangan arsitektur database, integrasi sistem real-time, hingga deployment ke production. Fokus utama saya adalah menciptakan solusi teknologi yang dapat meningkatkan efisiensi operasional perusahaan.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="leading-relaxed text-muted-foreground">
               Selain di dunia development, saya juga memiliki pengalaman mengelola infrastruktur jaringan sekolah (Mikrotik, Server) dan pernah menjadi pembina/pelatih Robotic yang berhasil membawa tim meraih Juara 1 tingkat sekolah.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {skills.map((skill, index) => {
               const Icon = skill.icon;
               return (
@@ -43,12 +38,12 @@ export default function About() {
                   key={skill.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ once: true, margin: '-50px' }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="p-6 rounded-2xl border border-border/50 bg-muted/20 hover:bg-muted/40 transition-colors"
+                  className="rounded-2xl border border-border/60 bg-[var(--color-surface)] p-6 shadow-[var(--shadow-soft)] backdrop-blur-sm transition-colors hover:bg-[var(--color-surface-strong)]"
                 >
-                  <Icon className="text-blue-400 mb-4" size={32} />
-                  <h3 className="font-semibold mb-2 text-sm">{skill.name}</h3>
+                  <Icon className="mb-4 text-[var(--color-accent)]" size={32} />
+                  <h3 className="mb-2 text-sm font-semibold">{skill.name}</h3>
                   <p className="text-xs text-muted-foreground">{skill.desc}</p>
                 </motion.div>
               );

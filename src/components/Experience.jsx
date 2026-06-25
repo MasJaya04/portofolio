@@ -46,38 +46,34 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-background border-t border-border/50">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section id="experience" className="border-t border-border/50 bg-background py-24">
+      <div className="container mx-auto max-w-4xl px-6">
         <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Pengalaman <span className="text-blue-400">Kerja</span>
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            Pengalaman <span className="text-[var(--color-accent)]">Kerja</span>
           </h2>
-          <p className="text-muted-foreground">
-            Perjalanan karir profesional dan latar belakang pendidikan saya.
-          </p>
+          <p className="text-muted-foreground">Perjalanan karir profesional dan latar belakang pendidikan saya.</p>
         </div>
 
-        <div className="relative border-l border-border ml-4 md:mx-auto md:w-full">
+        <div className="relative ml-4 border-l border-border md:mx-auto md:w-full">
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="mb-10 ml-8 relative md:w-1/2 md:odd:ml-0 md:even:ml-auto md:even:pl-8 md:odd:pr-8 md:odd:text-right group"
+              className="group relative mb-10 ml-8 md:w-1/2 md:odd:ml-0 md:odd:pr-8 md:odd:text-right md:even:ml-auto md:even:pl-8"
             >
-              <div className="absolute -left-10 md:group-odd:-right-[1.1rem] md:group-odd:left-auto md:group-even:-left-[1.1rem] w-8 h-8 rounded-full bg-background border-2 border-blue-400 flex items-center justify-center text-blue-400 mt-1 shadow-[0_0_10px_rgba(59,130,246,0.3)]">
+              <div className="absolute -left-10 mt-1 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-background text-[var(--color-accent)] border-[var(--color-accent-border)] shadow-[0_0_18px_var(--color-accent-soft)] md:group-even:-left-[1.1rem] md:group-odd:left-auto md:group-odd:-right-[1.1rem]">
                 {exp.type === 'work' ? <Briefcase size={14} /> : <GraduationCap size={14} />}
               </div>
-              
-              <div className="bg-muted/10 hover:bg-muted/30 border border-border/50 p-6 rounded-2xl transition-colors text-left">
-                <span className="text-sm font-medium text-blue-400 mb-2 block">{exp.date}</span>
-                <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
-                <h4 className="text-md text-muted-foreground mb-4">{exp.company}</h4>
-                <p className="text-sm text-muted-foreground/80 leading-relaxed">
-                  {exp.description}
-                </p>
+
+              <div className="rounded-2xl border border-border/60 bg-[var(--color-surface)] p-6 text-left shadow-[var(--shadow-soft)] backdrop-blur-sm transition-colors hover:bg-[var(--color-surface-strong)]">
+                <span className="mb-2 block text-sm font-medium text-[var(--color-accent)]">{exp.date}</span>
+                <h3 className="mb-1 text-xl font-bold">{exp.title}</h3>
+                <h4 className="mb-4 text-md text-muted-foreground">{exp.company}</h4>
+                <p className="text-sm leading-relaxed text-muted-foreground">{exp.description}</p>
               </div>
             </motion.div>
           ))}
