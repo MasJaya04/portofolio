@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const basePath = env.VITE_BASE_PATH?.trim() || './'
+  const outDir = env.VITE_BUILD_OUT_DIR?.trim() || 'dist'
+  const isExternalOutDir = outDir.startsWith('../') || outDir.startsWith('/')
 
   return {
     base: basePath,
@@ -15,8 +17,8 @@ export default defineConfig(({ mode }) => {
     ],
     build: {
       assetsDir: 'assets',
-      emptyOutDir: true,
-      outDir: 'dist',
+      emptyOutDir: !isExternalOutDir,
+      outDir,
     },
   }
 })
