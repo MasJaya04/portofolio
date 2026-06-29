@@ -31,4 +31,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }} # Nilai secret ini adalah "/"
-          local-dir: ./dist/ # ⚠️ Ganti ke ./build/ jika Anda menggunakan Create-React-App
+          local-dir: ./dist/
