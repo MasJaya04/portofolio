@@ -1,0 +1,34 @@
+name: Deploy to cPanel via FTP
+
+on:
+  push:
+    branches: ["main"] # Ganti ke "master" jika branch utama Anda bernama master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Sesuaikan dengan versi Node.js project Anda
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+        # Hasil build akan berada di folder 'dist' (Vite) atau 'build' (Create-React-App)
+
+      - name: Upload to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }} # Nilai secret ini adalah "/"
+          local-dir: ./dist/ # ⚠️ Ganti ke ./build/ jika Anda menggunakan Create-React-App
