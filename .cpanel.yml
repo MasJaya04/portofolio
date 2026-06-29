@@ -1,4 +1,3 @@
----
 deployment:
   tasks:
     - 'export DEPLOYPATH=$HOME/public_html/'
@@ -6,4 +5,4 @@ deployment:
     - 'npm install'
     - 'npm run build'
     - '/usr/bin/find $DEPLOYPATH -mindepth 1 -maxdepth 1 ! -name .well-known -exec /bin/rm -rf {} +'
-    - '/bin/cp -R dist/. $DEPLOYPATH'
+    - '/bin/cp -R dist/. $DEPLOYPATH'  # ✅ pastikan folder build adalah 'dist'
